@@ -24,7 +24,8 @@ async def scheduled(wait_for):
     while True:
         url = 'https://www.cybersport.ru/dota-2'
         response = requests.get(url)
-        if response is not ConnectionError:
+
+        if response is not ConnectionError and requests is not ConnectionError:
             soup = BeautifulSoup(response.text, 'lxml')
             # Парсинг последней статьи из списка
             new = soup.find('div', class_='grid__col--ipad-4 grid__col--phone-6 margin-bottom--20')
